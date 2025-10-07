@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Projects — Yahya Jan</title>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Personal site: portfolio, resume, projects, and contact." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header" role="banner">
+  <div class="container header-inner">
+    <a class="logo" href="index.html" aria-label="Home">★ MySite</a>
+
+    <input type="checkbox" id="nav-toggle" class="nav-checkbox" aria-label="Toggle navigation" />
+    <label for="nav-toggle" class="nav-toggle" aria-controls="primary-menu" aria-expanded="false">Menu</label>
+
+    <nav class="site-nav" role="navigation" aria-label="Main">
+      <ul id="primary-menu" class="nav-list">
+        <li><a href="about.html">About</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+    <main class="container">
+      <h1>Projects</h1>
+      <section class="projects grid-2">
+        <article class="card project">
+          <img src="images/project1.png" alt="Screenshot of Project One" class="project-img" />
+          <div class="card-body">
+            <h3>Golf Score Tracker</h3>
+            <p>Created a score tracker for golf players allowing them to input their scores and compiling them into a database
+              to track and compare with other players.
+            </p>
+            <div class="chip-row">
+              <span class="chip">VBA</span><span class="chip">VBA Macros</span>
+            </div>
+            <p class="links">
+              <a class="link" href="https://github.com/Yjan11/personal-website/blob/main/K360-Capstone.xlsm" aria-label="GitHub repository for Project One">Repo</a>
+              <a class="link" href="K360-Capstone.xlsm" aria-label="GitHub repository for Project Two">Live Demo</a>
+            </p>
+          </div>
+        </article>
+
+        <article class="card project">
+          <img src="images/project2.png" alt="Screenshot of Project Two" class="project-img" />
+          <div class="card-body">
+            <h3>Student Management Database</h3>
+            <p>Created a database for managing students, which also includes the projects they manage and documents associated with them.
+              Allows users to also assign teams for proejcts and enter new students into the system.
+            </p>
+            <div class="chip-row">
+              <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">Python</span>
+            </div>
+            <p class="links">
+              <a class="link" href="https://github.com/Yjan11/personal-website/blob/main/Front-End%20Prototype%20Project%20Future.html" aria-label="GitHub repository for Project Two">Repo</a>
+              <a class="link" href="Front-End Prototype Project Future.html" aria-label="GitHub repository for Project Two">Live Demo</a>
+            </p>
+          </div>
+        </article>
+      </section>
+    </main>
+    <footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <p>&copy; <time datetime="2025">2025</time> Yahya Jan. All rights reserved.</p>
+  </div>
+</footer>
+  </body>
+</html>
