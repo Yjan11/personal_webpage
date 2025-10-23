@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Projects — Yahya Jan</title>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Personal site: portfolio, resume, projects, and contact." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  </head>
+  <body>
+    <header class="site-header" role="banner">
+  <div class="container header-inner">
+    <a class="logo" href="{{ url_for('index') }}" aria-label="Home">★ MySite</a>
+
+    <input type="checkbox" id="nav-toggle" class="nav-checkbox" aria-label="Toggle navigation" />
+    <label for="nav-toggle" class="nav-toggle" aria-controls="primary-menu" aria-expanded="false">Menu</label>
+
+    <nav class="site-nav" role="navigation" aria-label="Main">
+      <ul id="primary-menu" class="nav-list">
+        <li><a href="{{ url_for('about') }}">About</a></li>
+        <li><a href="{{ url_for('resume') }}">Resume</a></li>
+        <li><a href="{{ url_for('projects') }}">Projects</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+    <main class="container">
+      <h1>Projects</h1>
+      
+      <!-- Projects Table -->
+      <div class="projects-table-container">
+        <table class="projects-table">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Technologies</th>
+              <th>Links</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if projects %}
+              {% for project in projects %}
+              <tr>
+                <td>
+                  <img src="{{ url_for('static', filename='images/' + project.Image) }}" 
+                       alt="{{ project.Title }}" 
+                       class="project-table-img" />
+                </td>
+                <td class="project-title">{{ project.Title }}</td>
+                <td class="project-description">{{ project.Description }}</td>
+                <td class="project-technologies">
+                  {% if project.Technologies %}
+                    {% set tech_list = project.Technologies.split(',') %}
+                    {% for tech in tech_list %}
+                      <span class="chip">{{ tech.strip() }}</span>
+                    {% endfor %}
+                  {% endif %}
+                </td>
+                <td class="project-links">
+                  {% if project.GitHubLink %}
+                    <a class="link" href="{{ project.GitHubLink }}" target="_blank" rel="noopener">GitHub</a>
+                  {% endif %}
+                  {% if project.DemoLink %}
+                    <a class="link" href="{{ project.DemoLink }}" target="_blank" rel="noopener">Demo</a>
+                  {% endif %}
+                </td>
+              </tr>
+              {% endfor %}
+            {% else %}
+              <tr>
+                <td colspan="5" class="no-projects">No projects found. <a href="{{ url_for('contact') }}">Add a project</a></td>
+              </tr>
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="add-project-section">
+        <p>Want to add a new project? <a href="{{ url_for('contact') }}" class="btn">Add Project</a></p>
+      </div>
+    </main>
+    <footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <p>&copy; <time datetime="2025">2025</time> Yahya Jan. All rights reserved.</p>
+  </div>
+</footer>
+  </body>
+</html>

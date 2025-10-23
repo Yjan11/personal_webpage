@@ -8,22 +8,22 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
   </head>
   <body>
     <header class="site-header" role="banner">
   <div class="container header-inner">
-    <a class="logo" href="index.html" aria-label="Home">★ MySite</a>
+    <a class="logo" href="{{ url_for('index') }}" aria-label="Home">★ MySite</a>
 
     <input type="checkbox" id="nav-toggle" class="nav-checkbox" aria-label="Toggle navigation" />
     <label for="nav-toggle" class="nav-toggle" aria-controls="primary-menu" aria-expanded="false">Menu</label>
 
     <nav class="site-nav" role="navigation" aria-label="Main">
       <ul id="primary-menu" class="nav-list">
-        <li><a href="about.html">About</a></li>
-        <li><a href="resume.html">Resume</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="{{ url_for('about') }}">About</a></li>
+        <li><a href="{{ url_for('resume') }}">Resume</a></li>
+        <li><a href="{{ url_for('projects') }}">Projects</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact</a></li>
       </ul>
     </nav>
   </div>

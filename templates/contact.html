@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Contact — Yahya Jan</title>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Personal site: portfolio, resume, projects, and contact." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  </head>
+  <body>
+    <header class="site-header" role="banner">
+  <div class="container header-inner">
+    <a class="logo" href="{{ url_for('index') }}" aria-label="Home">★ MySite</a>
+
+    <input type="checkbox" id="nav-toggle" class="nav-checkbox" aria-label="Toggle navigation" />
+    <label for="nav-toggle" class="nav-toggle" aria-controls="primary-menu" aria-expanded="false">Menu</label>
+
+    <nav class="site-nav" role="navigation" aria-label="Main">
+      <ul id="primary-menu" class="nav-list">
+        <li><a href="{{ url_for('about') }}">About</a></li>
+        <li><a href="{{ url_for('resume') }}">Resume</a></li>
+        <li><a href="{{ url_for('projects') }}">Projects</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+    <main class="container">
+      <h1>Contact</h1>
+      <p>Email - <a class="contactlinks" href="mailto:you@example.com">yjan@iu.edu</a> | <a class="contactlinks" href="https://www.linkedin.com/in/yahyajan/" rel="noopener">LinkedIn</a> | <a class="contactlinks" href="https://github.com/Yjan11" rel="noopener">GitHub</a></p>
+
+      <!-- Success Message -->
+      {% if message %}
+        <div class="success-message">{{ message }}</div>
+      {% endif %}
+
+      <!-- Add New Project Form -->
+      <section class="add-project-section">
+        <h2>Add New Project</h2>
+        <form id="project-form" class="form" action="{{ url_for('contact') }}" method="post" novalidate>
+          <div class="form-row">
+            <label for="title">Project Title</label>
+            <input id="title" name="title" type="text" required aria-required="true" aria-describedby="titleHelp" />
+            <small id="titleHelp" class="hint">Required. Enter the project title.</small>
+            <small class="error" data-for="title">Project title is required.</small>
+          </div>
+
+          <div class="form-row">
+            <label for="description">Description</label>
+            <textarea id="description" name="description" required aria-required="true" aria-describedby="descriptionHelp" rows="4"></textarea>
+            <small id="descriptionHelp" class="hint">Required. Describe your project.</small>
+            <small class="error" data-for="description">Description is required.</small>
+          </div>
+
+          <div class="form-row">
+            <label for="image_filename">Image Filename</label>
+            <input id="image_filename" name="image_filename" type="text" required aria-required="true" aria-describedby="imageHelp" />
+            <small id="imageHelp" class="hint">Required. Enter the image filename (e.g., project3.png). Make sure to add the image to static/images folder.</small>
+            <small class="error" data-for="image_filename">Image filename is required.</small>
+          </div>
+
+          <div class="form-row">
+            <label for="technologies">Technologies</label>
+            <input id="technologies" name="technologies" type="text" aria-describedby="technologiesHelp" />
+            <small id="technologiesHelp" class="hint">Optional. Separate multiple technologies with commas (e.g., Python, Flask, SQLite).</small>
+          </div>
+
+          <div class="form-row">
+            <label for="github_link">GitHub Link</label>
+            <input id="github_link" name="github_link" type="url" aria-describedby="githubHelp" />
+            <small id="githubHelp" class="hint">Optional. Enter the GitHub repository URL.</small>
+          </div>
+
+          <div class="form-row">
+            <label for="demo_link">Demo Link</label>
+            <input id="demo_link" name="demo_link" type="url" aria-describedby="demoHelp" />
+            <small id="demoHelp" class="hint">Optional. Enter the live demo URL.</small>
+          </div>
+
+          <button class="btn" type="submit">Add Project</button>
+      </form>
+
+        </form>
+      </section>
+
+      <!-- Current Projects Display -->
+      {% if projects %}
+      <section class="current-projects-section">
+        <h2>Current Projects</h2>
+        <p>View all projects: <a href="{{ url_for('projects') }}" class="btn btn-outline">View Projects Page</a></p>
+      </section>
+      {% endif %}
+    </main>
+    <footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <p>&copy; <time datetime="2025">2025</time> Yahya Jan. All rights reserved.</p>
+  </div>
+</footer>
+  </body>
+</html>
